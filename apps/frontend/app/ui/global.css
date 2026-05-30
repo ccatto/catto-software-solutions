@@ -1,0 +1,107 @@
+/* app/ui/global.css */
+@import 'tailwindcss';
+
+/* Import @ccatto/ui theme CSS files */
+@import '@ccatto/ui/themes/tokens.css';
+@import '@ccatto/ui/themes/neon-pulse.css';
+@import '@ccatto/ui/themes/royal-crown.css';
+@import '@ccatto/ui/themes/corporate-steel.css';
+@import '@ccatto/ui/themes/forest-earth.css';
+/* Maps every --catto-theme-* token to a Tailwind --color-theme-* class
+   so utilities like text-theme-on-primary, bg-theme-success, etc. resolve.
+   Replaces a manual @theme mirror that had to track tokens by hand. */
+@import '@ccatto/ui/themes/tailwind-tokens.css';
+
+/* Scan @ccatto/* packages for Tailwind classes (installed from npm) */
+@source "../../../../node_modules/@ccatto/ui/dist";
+@source "../../../../node_modules/@ccatto/auth-ui/dist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Font families */
+  --font-sans: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  --font-montserrat: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  --font-urbanist: 'Urbanist Variable', 'Urbanist', system-ui, sans-serif;
+
+  /* Catto theme color tokens */
+  --color-catto-bg-default: hsl(var(--catto-bg-default));
+  --color-catto-text-default: hsl(var(--catto-text-default));
+  --color-catto-catto-secondary: hsl(var(--catto-bg-secondary));
+  --color-catto-bright-orange: hsl(var(--catto-bright-orange));
+
+  --color-catto-primary-500: hsl(var(--catto-primary-500));
+  --color-catto-primary-600: hsl(var(--catto-primary-600));
+  --color-catto-secondary-500: hsl(var(--catto-secondary-500));
+  --color-catto-secondary-600: hsl(var(--catto-secondary-600));
+
+  --color-catto-button-default: hsl(var(--catto-button-default));
+  --color-catto-button-default-foreground: hsl(var(--catto-button-default-foreground));
+  --color-catto-button-primary: hsl(var(--catto-button-primary));
+  --color-catto-button-primary-foreground: hsl(var(--catto-button-primary-foreground));
+  --color-catto-button-secondary: hsl(var(--catto-button-secondary));
+  --color-catto-button-secondary-foreground: hsl(var(--catto-button-secondary-foreground));
+  --color-catto-button-ghost: hsl(var(--catto-button-ghost));
+  --color-catto-button-ghost-foreground: hsl(var(--catto-button-ghost-foreground));
+  --color-catto-button-destructive: hsl(var(--catto-button-destructive));
+  --color-catto-button-destructive-foreground: hsl(var(--catto-button-destructive-foreground));
+
+  --color-catto-card-background: hsl(var(--catto-card-background));
+  --color-catto-card-foreground: hsl(var(--catto-card-foreground));
+  --color-catto-card-border: hsl(var(--catto-card-border));
+
+  --color-catto-input-background: hsl(var(--catto-input-background));
+  --color-catto-input-foreground: hsl(var(--catto-input-foreground));
+  --color-catto-input-border: hsl(var(--catto-input-border));
+  --color-catto-input-placeholder: hsl(var(--catto-input-placeholder));
+
+  --color-catto-surface-background: hsl(var(--catto-surface-background));
+  --color-catto-surface-foreground: hsl(var(--catto-surface-foreground));
+  --color-catto-surface-muted: hsl(var(--catto-surface-muted));
+  --color-catto-surface-muted-foreground: hsl(var(--catto-surface-muted-foreground));
+
+  --color-catto-border: hsl(var(--catto-border));
+  --color-catto-ring: hsl(var(--catto-ring));
+
+  /* Theme colors live in @ccatto/ui/themes/tailwind-tokens.css (imported above). */
+
+  /* Basic animations */
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-in: slideIn 0.3s ease-out;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideIn {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+}
+
+/*
+  Tailwind CSS v4 border color compatibility
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  body {
+    @apply bg-catto-bg-default font-montserrat text-catto-text-default relative m-0 flex min-h-screen w-full flex-col overflow-x-hidden antialiased;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}

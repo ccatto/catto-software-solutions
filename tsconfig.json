@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "baseUrl": ".", // Crucial for monorepos
+    "paths": {
+      "*": ["./*"] // Adjust this to match your project's structure
+    },
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "./apps/frontend" },
+    { "path": "./apps/database" },
+    { "path": "./apps/backend" },
+    { "path": "./packages/shared" }
+  ]
+}

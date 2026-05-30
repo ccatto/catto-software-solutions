@@ -1,0 +1,41 @@
+# Build directories
+**/.next/
+**/dist/
+**/build/
+**/out/
+
+# Node modules
+**/node_modules/
+
+# Cache
+**/.cache/
+**/.yarn/
+
+# Generated files
+*.generated.*
+**/generated/
+
+# Lock files
+**/yarn.lock
+**/package-lock.json
+
+# Coverage reports
+**/coverage/
+
+# Env files
+**/.env*
+!**/.env.example
+
+# Log files
+**/*.log
+
+# Public assets
+**/public/assets/
+
+# Prisma generated files
+**/apps/database/generated/
+
+# Other files to ignore
+**/.DS_Store
+**/*.min.js
+**/*.bundle.js

@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "title": "My App",
+    "description": "Built with the Catto App Template"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "noResults": "No results found",
+    "confirmDelete": "Are you sure you want to delete this?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "auth": {
+    "signOut": "Sign Out",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "createAccount": "Create account",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "signInPageTitle": "Sign In",
+    "registerPageTitle": "Create your account",
+    "tagline": "Welcome back",
+    "orContinueWith": "Or continue with",
+    "name": "Name",
+    "confirmPassword": "Confirm password",
+    "registerHere": "Register here",
+    "signInHere": "Sign in here",
+    "signIn": {
+      "cardTitle": "Sign in to your account",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "errorGeneric": "Sign in failed. Check your credentials and try again."
+    },
+    "register": {
+      "cardTitle": "Create your account",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "errorGeneric": "Could not create your account. Try again or contact support."
+    },
+    "profile": {
+      "cardTitle": "Your profile",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "submit": "Save changes",
+      "submitting": "Saving…",
+      "errorGeneric": "Could not save your profile. Try again or contact support.",
+      "successMessage": "Profile updated"
+    },
+    "profilePageTitle": "Your profile"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "dashboard": "Dashboard",
+    "account": "Account",
+    "profile": "Profile",
+    "signIn": "Sign In"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your dashboard",
+    "description": "This is a protected page that requires authentication.",
+    "loading": "Loading…"
+  },
+  "about": {
+    "title": "About",
+    "description": "This app was built using the Catto App Template."
+  },
+  "home": {
+    "title": "Welcome",
+    "subtitle": "Your App Name",
+    "description": "A modern full-stack application built with Next.js, NestJS, and Prisma.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "defaultSubtitle": "Something went wrong",
+    "defaultDescription": "We couldn't find what you were looking for. The page may have moved or never existed.",
+    "internalServerError": "An internal server error occurred. Please try again later.",
+    "unableToLinkAccount": "We couldn't link that account. It may already be in use.",
+    "accessDenied": "You don't have permission to access that resource.",
+    "signInFailed": "Sign in failed. Check your credentials and try again.",
+    "accountNotFound": "We couldn't find an account matching those credentials.",
+    "auth": {
+      "title": "Authentication problem",
+      "defaultSubtitle": "We hit a snag signing you in",
+      "defaultDescription": "Try signing in again. If the problem persists, contact support.",
+      "internalServerError": "An internal server error occurred while signing you in.",
+      "unableToLinkAccount": "We couldn't link that account. It may already be in use.",
+      "accessDenied": "You don't have permission to access that resource.",
+      "signInFailed": "Sign in failed. Check your credentials and try again.",
+      "accountNotFound": "We couldn't find an account matching those credentials.",
+      "signIn": "Sign in",
+      "goHome": "Go home"
+    }
+  }
+}

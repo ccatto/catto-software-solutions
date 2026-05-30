@@ -1,0 +1,58 @@
+{
+  "name": "catto-app-template",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "build:backend": "cd apps/backend && yarn build",
+    "build:frontend": "cd apps/frontend && yarn build",
+    "build:mobile": "cd apps/mobile && yarn build",
+    "db:generate": "cd apps/database && dotenv -e ../backend/.env -- npx prisma generate",
+    "db:push": "cd apps/database && dotenv -e ../backend/.env -- npx prisma db push && dotenv -e ../backend/.env -- npx prisma generate",
+    "db:seed": "cd apps/database && dotenv -e ../backend/.env -- npx prisma db seed",
+    "db:studio": "cd apps/database && dotenv -e ../backend/.env -- npx prisma studio",
+    "dev": "yarn workspaces run dev",
+    "dev:backend": "cd apps/backend && yarn start:dev",
+    "dev:frontend": "cd apps/frontend && yarn dev",
+    "lint": "yarn workspaces run lint",
+    "mobile:ios:open": "cd apps/mobile && yarn ios:open",
+    "mobile:ios:run": "cd apps/mobile && yarn ios:run",
+    "mobile:sync": "cd apps/mobile && yarn sync",
+    "postinstall": "yarn workspace @ccatto-app/database prisma generate && yarn workspace @ccatto-app/database build",
+    "prettier": "prettier --write --ignore-unknown --no-error-on-unmatched-pattern .",
+    "prisma:generate": "cd apps/database && dotenv -e ../backend/.env -- npx prisma generate",
+    "start": "yarn workspace @ccatto-app/frontend start",
+    "test": "yarn workspaces run test",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.4.1",
+    "@tailwindcss/postcss": "^4.0.9",
+    "passport": "^0.7.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prisma": "^7.4.1",
+    "turbo": "^2.4.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "dotenv-cli": "^11.0.0",
+    "eslint": "^9.21.0",
+    "eslint-config-next": "^15.2.0",
+    "prettier": "^3.5.2",
+    "prettier-plugin-packagejson": "^2.5.8",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "yarn@1.22.22"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@ccatto-app/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catto App Template - Mobile (Capacitor)",
+  "license": "MIT",
+  "scripts": {
+    "android:open": "cap open android",
+    "android:run": "cap run android",
+    "build": "yarn build:static && cap sync",
+    "build:frontend": "node build-mobile.js",
+    "build:legacy": "yarn build:frontend && yarn copy:frontend && cap sync",
+    "build:static": "node scripts/build-static.js",
+    "copy:frontend": "shx rm -rf www && (shx test -d ../frontend/out && shx cp -r ../frontend/out www || shx mkdir www)",
+    "dev": "echo 'Use yarn dev:frontend in the root to run the development server'",
+    "ios:open": "cap open ios",
+    "ios:run": "cap run ios",
+    "sync": "cap sync",
+    "sync:android": "cap sync android",
+    "sync:ios": "cap sync ios"
+  },
+  "dependencies": {
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@capacitor/keyboard": "^8.0.0",
+    "@capacitor/network": "^8.0.0",
+    "@capacitor/preferences": "^8.0.0",
+    "@capacitor/push-notifications": "^8.0.0",
+    "@capacitor/share": "^8.0.0",
+    "@capacitor/splash-screen": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0",
+    "shx": "^0.3.4"
+  }
+}

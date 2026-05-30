@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "title": "Mi App",
+    "description": "Construido con la plantilla Catto App"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salio mal",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "back": "Atras",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "search": "Buscar",
+    "noResults": "No se encontraron resultados",
+    "confirmDelete": "Estas seguro de que quieres eliminar esto?",
+    "yes": "Si",
+    "no": "No"
+  },
+  "auth": {
+    "signOut": "Cerrar sesion",
+    "signUp": "Registrarse",
+    "email": "Correo electronico",
+    "password": "Contrasena",
+    "forgotPassword": "Olvidaste tu contrasena?",
+    "createAccount": "Crear cuenta",
+    "alreadyHaveAccount": "Ya tienes una cuenta?",
+    "dontHaveAccount": "No tienes una cuenta?",
+    "signInPageTitle": "Iniciar sesion",
+    "registerPageTitle": "Crea tu cuenta",
+    "tagline": "Bienvenido de vuelta",
+    "orContinueWith": "O continuar con",
+    "name": "Nombre",
+    "confirmPassword": "Confirmar contrasena",
+    "registerHere": "Registrate aqui",
+    "signInHere": "Inicia sesion aqui",
+    "signIn": {
+      "cardTitle": "Inicia sesion en tu cuenta",
+      "emailLabel": "Correo electronico",
+      "passwordLabel": "Contrasena",
+      "submit": "Iniciar sesion",
+      "submitting": "Iniciando sesion…",
+      "errorGeneric": "El inicio de sesion fallo. Revisa tus credenciales e intentalo de nuevo."
+    },
+    "register": {
+      "cardTitle": "Crea tu cuenta",
+      "nameLabel": "Nombre",
+      "emailLabel": "Correo electronico",
+      "passwordLabel": "Contrasena",
+      "submit": "Crear cuenta",
+      "submitting": "Creando cuenta…",
+      "errorGeneric": "No pudimos crear tu cuenta. Intentalo otra vez o contacta a soporte."
+    },
+    "profile": {
+      "cardTitle": "Tu perfil",
+      "nameLabel": "Nombre",
+      "emailLabel": "Correo electronico",
+      "submit": "Guardar cambios",
+      "submitting": "Guardando…",
+      "errorGeneric": "No pudimos guardar tu perfil. Intentalo otra vez o contacta a soporte.",
+      "successMessage": "Perfil actualizado"
+    },
+    "profilePageTitle": "Tu perfil"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "dashboard": "Panel",
+    "account": "Cuenta",
+    "profile": "Perfil",
+    "signIn": "Iniciar sesion"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "welcome": "Bienvenido a tu panel",
+    "description": "Esta es una pagina protegida que requiere autenticacion.",
+    "loading": "Cargando…"
+  },
+  "about": {
+    "title": "Acerca de",
+    "description": "Esta app fue construida usando la plantilla Catto App."
+  },
+  "home": {
+    "title": "Bienvenido",
+    "subtitle": "Nombre de tu App",
+    "description": "Una aplicacion moderna full-stack construida con Next.js, NestJS y Prisma.",
+    "getStarted": "Comenzar",
+    "learnMore": "Saber mas"
+  },
+  "errors": {
+    "notFound": "Pagina no encontrada",
+    "defaultSubtitle": "Algo salio mal",
+    "defaultDescription": "No pudimos encontrar lo que buscabas. La pagina puede haberse movido o no existir.",
+    "internalServerError": "Ocurrio un error interno. Intentalo de nuevo mas tarde.",
+    "unableToLinkAccount": "No pudimos vincular esa cuenta. Quiza ya este en uso.",
+    "accessDenied": "No tienes permiso para acceder a ese recurso.",
+    "signInFailed": "El inicio de sesion fallo. Revisa tus credenciales e intentalo de nuevo.",
+    "accountNotFound": "No encontramos una cuenta con esas credenciales.",
+    "auth": {
+      "title": "Problema de autenticacion",
+      "defaultSubtitle": "Hubo un problema al iniciar sesion",
+      "defaultDescription": "Intenta iniciar sesion otra vez. Si el problema persiste, contacta a soporte.",
+      "internalServerError": "Ocurrio un error interno al iniciar sesion.",
+      "unableToLinkAccount": "No pudimos vincular esa cuenta. Quiza ya este en uso.",
+      "accessDenied": "No tienes permiso para acceder a ese recurso.",
+      "signInFailed": "El inicio de sesion fallo. Revisa tus credenciales e intentalo de nuevo.",
+      "accountNotFound": "No encontramos una cuenta con esas credenciales.",
+      "signIn": "Iniciar sesion",
+      "goHome": "Ir al inicio"
+    }
+  }
+}

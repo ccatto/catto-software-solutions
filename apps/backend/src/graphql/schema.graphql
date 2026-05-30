@@ -1,0 +1,3 @@
+# This file is kept as a reference. The actual schema is auto-generated
+# by NestJS GraphQL (see autoSchemaFile in app.module.ts).
+# Run the backend to regenerate src/schema.gql.

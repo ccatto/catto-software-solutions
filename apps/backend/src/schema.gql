@@ -1,0 +1,145 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  accessToken: String!
+  refreshToken: String!
+  user: AuthUser!
+}
+
+type AuthUser {
+  email: String!
+  id: String!
+  name: String
+  role: String!
+}
+
+input CreateUserInput {
+  email: String!
+  image: String
+  name: String
+  password: String!
+  role: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ForgotPasswordResponse {
+  message: String!
+  resetToken: String
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type LogoutResponse {
+  message: String!
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): User!
+  deletePasskey(passkeyId: String!): PasskeyOperationResult!
+  deleteUser(id: ID!): User!
+  forgotPassword(email: String!): ForgotPasswordResponse!
+  generatePasskeyAuthenticationOptions(email: String): PasskeyAuthenticationOptionsResponse!
+  generatePasskeyRegistrationOptions: PasskeyRegistrationOptionsResponse!
+  loginUser(input: LoginInput!): AuthResponse!
+  logoutUser(refreshToken: String!): LogoutResponse!
+  refreshToken(refreshToken: String!): RefreshTokenResponse!
+  registerUser(input: RegisterInput!): AuthResponse!
+  renamePasskey(friendlyName: String!, passkeyId: String!): PasskeyOperationResult!
+  resetPassword(newPassword: String!, resetToken: String!): ResetPasswordResponse!
+  updateUser(data: UpdateUserInput!): User!
+  verifyPasskeyAuthentication(input: VerifyPasskeyAuthenticationInput!): AuthResponse!
+  verifyPasskeyRegistration(input: VerifyPasskeyRegistrationInput!): PasskeyRegistrationResult!
+}
+
+type PasskeyAuthenticationOptionsResponse {
+  options: String!
+  sessionId: String!
+}
+
+type PasskeyInfo {
+  backedUp: Boolean!
+  createdAt: DateTime!
+  deviceType: String!
+  friendlyName: String
+  id: String!
+  lastUsedAt: DateTime
+}
+
+type PasskeyOperationResult {
+  success: Boolean!
+}
+
+type PasskeyRegistrationOptionsResponse {
+  options: String!
+}
+
+type PasskeyRegistrationResult {
+  friendlyName: String
+  id: String!
+  success: Boolean!
+}
+
+type Query {
+  myPasskeys: [PasskeyInfo!]!
+  user(where: WhereUserInput!): User!
+  users(where: WhereUserInput): [User!]!
+}
+
+type RefreshTokenResponse {
+  accessToken: String!
+}
+
+input RegisterInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type ResetPasswordResponse {
+  message: String!
+}
+
+input UpdateUserInput {
+  email: String
+  id: ID!
+  image: String
+  name: String
+  password: String
+  role: String
+}
+
+type User {
+  createdAt: DateTime!
+  email: String!
+  emailVerified: Boolean!
+  id: ID!
+  image: String
+  name: String
+  role: String!
+  updatedAt: DateTime!
+  username: String
+}
+
+input VerifyPasskeyAuthenticationInput {
+  response: String!
+  sessionId: String!
+}
+
+input VerifyPasskeyRegistrationInput {
+  friendlyName: String
+  response: String!
+}
+
+input WhereUserInput {
+  email: String
+  id: ID
+}

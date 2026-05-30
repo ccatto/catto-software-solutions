@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "jsxImportSource": "react",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"], // Root alias for i18n.ts, navigation.ts, etc.
+      "@api-v2/*": ["app/api/v2/*"], // Maps @api-v2 alias to app/api/v2
+      "@app/*": ["app/*"],
+      "@atomic-design/*": ["app/components/AtomicDesign/*"], // Maps @atomic-design alias to AtomicDesign
+      "@components/*": ["./*"], // Note: broad alias - tracked in BACKLOG.md
+      // "@prisma/*": ["prisma/*"],
+      "@lib/*": ["lib/*"], // Maps @lib alias to the lib directory,
+      "@ui/*": ["app/ui/*"], // maps to styles
+      "@utils/*": ["app/components/Utils/*"], // Maps @utils alias to Utils folder
+      "@zustand/*": ["zustand/*"] // maps @zustand alias to root /zustand
+    },
+    "target": "ES2022",
+    "types": ["next-themes", "node"]
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": [
+    "next-env.d.ts",
+    "types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "prisma/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "vitest.config.ts", "vitest.setup.ts"]
+}
