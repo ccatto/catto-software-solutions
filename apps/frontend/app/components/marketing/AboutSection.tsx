@@ -2,7 +2,6 @@ import Section from './Section';
 import SectionHeading from './SectionHeading';
 import { SECTIONS } from './styles';
 
-// TODO: Replace with your real stack.
 const TECH_STACK = [
   'Swift',
   'Kotlin',
@@ -30,7 +29,6 @@ export default function AboutSection() {
             centered={false}
           />
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-            {/* TODO: Your bio */}
             <p>
               Catto Software Solutions is a software development studio focused
               on shipping polished, reliable products. We work closely with
@@ -43,10 +41,9 @@ export default function AboutSection() {
           </div>
           <div className="mt-8 flex items-baseline gap-3">
             <span className="font-[family-name:var(--font-urbanist)] text-5xl font-bold text-orange-500">
-              10+
+              25+
             </span>
             <span className="text-gray-600 dark:text-gray-300">
-              {/* TODO: Adjust experience */}
               years building web &amp; mobile software
             </span>
           </div>

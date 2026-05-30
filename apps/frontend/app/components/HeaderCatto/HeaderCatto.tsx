@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Cat, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ThemeToggleCatto, UserMenuDropdownCatto } from '@ccatto/ui';
 import { useSession, signOut } from '@lib/auth-client-compat';
 import { useRouter } from '@/navigation';
@@ -30,10 +30,12 @@ export default function HeaderCatto() {
         {/* Wordmark */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-gray-50"
+          className="flex items-baseline gap-2 text-lg font-bold text-gray-900 dark:text-gray-50"
         >
-          <Cat className="h-6 w-6 text-orange-500" />
-          {/* TODO: Swap for a logo if you have one */}
+          {/* TODO: swap for a short/wide logo variant once available (see docs/APP-BACKLOG.md) */}
+          <span className="font-[family-name:var(--font-urbanist)] text-orange-500">
+            CSS
+          </span>
           <span className="font-[family-name:var(--font-urbanist)]">
             Catto Software Solutions
           </span>

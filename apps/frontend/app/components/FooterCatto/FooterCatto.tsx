@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { Cat, Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin } from 'lucide-react';
 
-// TODO: Replace with your real contact email.
-const CONTACT_EMAIL = 'hello@cattosoftwaresolutions.com';
+// Placeholder until chris@cattosoftwaresolutions.com forwarding is set up (see docs/APP-BACKLOG.md).
+const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 const SOCIALS = [
   {
     label: 'GitHub',
@@ -21,9 +21,11 @@ export default function FooterCatto() {
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-gray-900 dark:text-gray-50"
+            className="flex items-baseline gap-2 font-bold text-gray-900 dark:text-gray-50"
           >
-            <Cat className="h-5 w-5 text-orange-500" />
+            <span className="font-[family-name:var(--font-urbanist)] text-orange-500">
+              CSS
+            </span>
             <span className="font-[family-name:var(--font-urbanist)]">
               Catto Software Solutions
             </span>

@@ -23,9 +23,34 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
   return {
+    metadataBase: new URL('https://cattosoftwaresolutions.com'),
     title: t('title'),
     description: t('description'),
-    // TODO: Add your canonical URL and alternate languages
+    alternates: {
+      canonical: '/',
+      languages: { en: '/en', es: '/es' },
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: 'https://cattosoftwaresolutions.com',
+      siteName: 'Catto Software Solutions',
+      type: 'website',
+      images: [
+        {
+          url: '/catto-software-solutions-logo.png',
+          width: 1774,
+          height: 887,
+          alt: 'Catto Software Solutions',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: ['/catto-software-solutions-logo.png'],
+    },
   };
 }
 

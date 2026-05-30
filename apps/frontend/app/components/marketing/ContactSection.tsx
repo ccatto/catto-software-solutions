@@ -6,8 +6,8 @@ import Section from './Section';
 import SectionHeading from './SectionHeading';
 import { ctaPrimary, SECTIONS } from './styles';
 
-// TODO: Replace with your real contact email.
-const CONTACT_EMAIL = 'hello@cattosoftwaresolutions.com';
+// Placeholder until chris@cattosoftwaresolutions.com forwarding is set up (see docs/APP-BACKLOG.md).
+const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 
 // Project types mirror the Services section.
 const PROJECT_TYPES = [

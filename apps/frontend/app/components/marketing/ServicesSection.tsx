@@ -16,7 +16,6 @@ interface Service {
   description: string;
 }
 
-// TODO: Tweak service copy as needed.
 const SERVICES: Service[] = [
   {
     icon: Smartphone,

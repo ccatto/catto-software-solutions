@@ -7,8 +7,31 @@ export const metadata: Metadata = {
   description: 'Get help and support from Catto Software Solutions.',
 };
 
-// Stub Support page — needed for app store submissions.
-// TODO: Replace the placeholder copy below with your real support info.
+const CONTACT_EMAIL = 'chriscatto3@gmail.com';
+
+const FAQS = [
+  {
+    q: 'How do I start a project?',
+    a: 'Use the “Start a Project” form on our homepage or email us directly. Tell us what you’re building and your timeline, and we’ll follow up to scope it out.',
+  },
+  {
+    q: 'What kind of projects do you take on?',
+    a: 'Custom mobile apps (iOS + Android), web apps and websites, AI integrations, MVPs and prototypes for startups, and ongoing maintenance for existing products.',
+  },
+  {
+    q: 'How fast will I hear back?',
+    a: 'We aim to respond to every inquiry within one business day.',
+  },
+  {
+    q: 'Do you offer ongoing support after launch?',
+    a: 'Yes. We offer maintenance and support plans to keep your product updated, monitored, and improving after it ships.',
+  },
+  {
+    q: 'Where are you located?',
+    a: 'We’re based in Boca Raton, Florida, and work with clients remotely.',
+  },
+];
+
 export default function SupportPage() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
@@ -24,15 +47,15 @@ export default function SupportPage() {
         Support
       </h1>
 
-      <div className="mt-8 space-y-6 leading-relaxed text-gray-600 dark:text-gray-300">
+      <div className="mt-6 space-y-6 leading-relaxed text-gray-600 dark:text-gray-300">
         <p>
-          {/* TODO: Replace with your real support details. */}
-          Need help? We&apos;re here for you. Reach out and we&apos;ll get back
-          to you as soon as we can.
+          Need help or have a question? We&rsquo;re here for you. The fastest way
+          to reach us is by email, and we aim to respond within one business
+          day.
         </p>
 
         <a
-          href="mailto:hello@cattosoftwaresolutions.com"
+          href={`mailto:${CONTACT_EMAIL}`}
           className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
         >
           <Mail className="h-4 w-4" />
@@ -43,10 +66,16 @@ export default function SupportPage() {
           <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
             Frequently asked questions
           </h2>
-          <p className="mt-2">
-            TODO: Add common questions and answers, response times, and any
-            support hours here.
-          </p>
+          <dl className="mt-4 space-y-6">
+            {FAQS.map(({ q, a }) => (
+              <div key={q}>
+                <dt className="font-medium text-gray-900 dark:text-gray-100">
+                  {q}
+                </dt>
+                <dd className="mt-1">{a}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
       </div>
     </article>
