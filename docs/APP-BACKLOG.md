@@ -28,10 +28,13 @@
 - Option B: **form-only** — remove the public email, and make the contact form notify Chris directly (email and/or SMS). If chosen, update footer + legal + support pages to point to the form instead of `mailto:`.
 - Tied to item #3 (the form needs a real backend either way).
 
-### 3. Wire the contact form to a real endpoint
-- `apps/frontend/app/components/marketing/ContactSection.tsx` currently logs to console and shows a success state (`// TODO` in `handleSubmit`).
-- Options: Formspree, a Next.js route handler, or the NestJS backend (`apps/backend`) once it's running.
-- Consider routing submissions to email and/or SMS (supports the "text me directly" idea in #2).
+### 3. Wire the contact form to a real endpoint — IN PROGRESS (SMS-only)
+- **Done (branch `feat/contact-form-sms-notify`):** form now posts to the backend GraphQL mutation `submitContactMessage`, which texts the team via `@ccatto/nest-sms` (Telnyx) — mirrors the rleaguez contact module.
+  - Backend: `apps/backend/src/modules/contact/` (module + resolver + service + input DTO); `CattoSmsModule.forRootAsync` uncommented in `app.module.ts`; `@ccatto/nest-sms` added to `package.json`.
+  - Frontend: `ContactSection.tsx` `handleSubmit` does a direct `fetch` to `NEXT_PUBLIC_GRAPHQL_ENDPOINT` (no ApolloProvider dependency), with loading + error states.
+  - Env: set `TELNYX_API_KEY`, `TELNYX_PHONE_NUMBER`, `TELNYX_MESSAGING_PROFILE_ID`, `ADMIN_PHONE` (and `CORS_ORIGIN` in prod). See `apps/backend/.env.example`.
+- **Requires the backend to be deployed/running** for production (see deployment item #10).
+- **Follow-ups:** add `@NoProfanity()` to the input DTO + reCAPTCHA (`@ccatto/nest-recaptcha`) for spam protection; optionally add email copy via `@ccatto/nest-email`; optionally persist submissions to the DB (Prisma) like rleaguez.
 
 ---
 

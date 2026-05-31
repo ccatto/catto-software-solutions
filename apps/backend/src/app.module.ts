@@ -16,17 +16,19 @@ import { GraphqlThrottlerGuard } from './common/guards/graphql-throttler.guard';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
+import { ContactModule } from './modules/contact/contact.module';
 import { GraphqlContextModule } from './graphql/graphql-context.module';
 import { GraphqlContextService } from './graphql/graphql-context.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
+import { CattoSmsModule } from '@ccatto/nest-sms';
 
 // Optional @ccatto/* modules - uncomment as needed:
 // import { CattoEmailModule } from '@ccatto/nest-email';
 // import { CattoPaymentsModule } from '@ccatto/nest-payments';
 // import { CattoPushModule } from '@ccatto/nest-push';
 // import { CattoRecaptchaModule } from '@ccatto/nest-recaptcha';
-// import { CattoSmsModule } from '@ccatto/nest-sms';
 
 @Module({
   imports: [
@@ -124,16 +126,17 @@ import { AppService } from './app.service';
     //     scoreThreshold: 0.5,
     //   }),
     // }),
-    // CattoSmsModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: (config: ConfigService) => ({
-    //     provider: 'telnyx' as const,
-    //     apiKey: config.get('TELNYX_API_KEY'),
-    //     phoneNumber: config.get('TELNYX_PHONE_NUMBER'),
-    //     messagingProfileId: config.get('TELNYX_MESSAGING_PROFILE_ID'),
-    //   }),
-    // }),
+    // SMS notifications (Telnyx) — powers the contact form. Global module.
+    CattoSmsModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        provider: 'telnyx' as const,
+        apiKey: config.get('TELNYX_API_KEY'),
+        phoneNumber: config.get('TELNYX_PHONE_NUMBER'),
+        messagingProfileId: config.get('TELNYX_MESSAGING_PROFILE_ID'),
+      }),
+    }),
 
     // Core infrastructure
     PrismaModule,
@@ -141,6 +144,7 @@ import { AppService } from './app.service';
 
     // Feature modules (users kept as example)
     UsersModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [

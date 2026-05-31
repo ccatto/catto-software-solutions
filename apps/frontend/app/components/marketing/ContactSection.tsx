@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { useMutation } from '@apollo/client';
 import { Mail, Send, CheckCircle2 } from 'lucide-react';
 import Section from './Section';
 import SectionHeading from './SectionHeading';
+import { SUBMIT_CONTACT_MESSAGE } from '@lib/graphql/contact.mutations';
 import { ctaPrimary, SECTIONS } from './styles';
 
 // Placeholder until chris@cattosoftwaresolutions.com forwarding is set up (see docs/APP-BACKLOG.md).
@@ -25,17 +27,40 @@ const inputClasses =
 // Contact — "Start a Project" form. Working UI wired to a placeholder handler.
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [submitContact, { loading }] = useMutation(SUBMIT_CONTACT_MESSAGE);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+    const form = e.currentTarget; // capture before any await (React nulls currentTarget)
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
 
-    // TODO: Wire this up to your real endpoint (e.g. Formspree, an API route,
-    // or email service). For now we just log and show a success state.
-    // Example: await fetch('https://formspree.io/f/XXXX', { method: 'POST', body: ... })
-    console.log('Contact form submission:', data);
+    setError(null);
+    try {
+      const { data: res } = await submitContact({
+        variables: {
+          input: {
+            name: data.name,
+            email: data.email,
+            projectType: data.projectType,
+            message: data.message,
+          },
+        },
+      });
 
-    setSubmitted(true);
+      if (!res?.submitContactMessage?.success) {
+        throw new Error(
+          res?.submitContactMessage?.message ?? 'Something went wrong.',
+        );
+      }
+
+      form.reset();
+      setSubmitted(true);
+    } catch {
+      setError(
+        'Sorry — we could not send your message. Please email us directly instead.',
+      );
+    }
   }
 
   return (
@@ -139,8 +164,16 @@ export default function ContactSection() {
               />
             </div>
 
-            <button type="submit" className={`${ctaPrimary} w-full sm:w-auto`}>
-              Send message
+            {error && (
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className={`${ctaPrimary} w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto`}
+            >
+              {loading ? 'Sending…' : 'Send message'}
               <Send className="h-4 w-4" />
             </button>
           </form>
