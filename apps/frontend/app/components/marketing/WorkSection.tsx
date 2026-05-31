@@ -1,4 +1,4 @@
-import { ImageIcon } from 'lucide-react';
+import { ImageIcon, ExternalLink } from 'lucide-react';
 import Section from './Section';
 import SectionHeading from './SectionHeading';
 import { SECTIONS } from './styles';
@@ -7,30 +7,34 @@ interface Project {
   name: string;
   pitch: string;
   tech: string[];
+  url: string;
   // TODO: Replace the placeholder area with a real screenshot:
-  // import the image and set `image: '/work/rleaguez.png'`, then render it.
+  // add the image to public/work/ and set `image: '/work/rleaguez.png'`, then render it.
   image?: string;
 }
 
-// TODO: Update project pitches and tech badges with real details.
+// TODO: Confirm project pitches/tech badges and add real screenshots.
 const PROJECTS: Project[] = [
   {
     name: 'RLeaguez',
     pitch:
       'A recreational sports league platform for organizing teams, schedules, and standings — web and mobile.',
     tech: ['Next.js', 'React Native', 'NestJS', 'Prisma'],
+    url: 'https://www.rleaguez.com/en',
   },
   {
     name: '800Auto Two',
     pitch:
       'On-demand towing and roadside assistance, connecting drivers with nearby operators in real time.',
     tech: ['React Native', 'Node.js', 'Maps API', 'Stripe'],
+    url: 'https://www.1800autotow.com/',
   },
   {
     name: 'NeuroVista Art AI',
     pitch:
       'An AI-powered art studio that turns prompts and ideas into original, shareable generated artwork.',
     tech: ['Next.js', 'Python', 'OpenAI', 'PostgreSQL'],
+    url: 'https://neuroartai.com/',
   },
 ];
 
@@ -45,15 +49,18 @@ export default function WorkSection() {
       />
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {PROJECTS.map((project) => (
-          <article
+          <a
             key={project.name}
-            className="group overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all hover:-translate-y-1 hover:shadow-xl dark:border-gray-800 dark:bg-gray-950"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-950 dark:hover:border-orange-500/40"
           >
             {/* Placeholder screenshot area — swap for a real image */}
             <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-orange-100 to-orange-50 text-orange-400 dark:from-gray-800 dark:to-gray-900 dark:text-gray-600">
               <ImageIcon className="h-10 w-10" />
             </div>
-            <div className="p-6">
+            <div className="flex flex-1 flex-col p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
                 {project.name}
               </h3>
@@ -70,8 +77,12 @@ export default function WorkSection() {
                   </span>
                 ))}
               </div>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-orange-600 dark:text-orange-400">
+                Visit site
+                <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </span>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </Section>

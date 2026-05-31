@@ -47,6 +47,10 @@
 ### 6. Confirm "10+ years" experience claim
 - `AboutSection.tsx` (`CONFIRM:` marker) — adjust to the true number.
 
+### 6b. Align site accent to RZ Orange (#FF910C)
+- The site currently uses Tailwind `orange-500` (`#F97316`) / `orange-600` (`#EA580C`) for accents; the official brand orange is **RZ Orange `#FF910C`** (see `BRAND.md`).
+- Define a custom Tailwind color / CSS variable for the brand orange and replace `orange-500`/`orange-600` usages across the marketing components for exact brand consistency.
+
 ### 7. Attorney review of legal pages
 - Privacy, Terms, and Support pages are solid drafts (Florida-governed) but should be reviewed by a lawyer before public launch / app-store submission.
 
