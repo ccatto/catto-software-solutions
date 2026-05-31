@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ImageIcon, ExternalLink } from 'lucide-react';
 import Section from './Section';
 import SectionHeading from './SectionHeading';
@@ -8,12 +9,11 @@ interface Project {
   pitch: string;
   tech: string[];
   url: string;
-  // TODO: Replace the placeholder area with a real screenshot:
-  // add the image to public/work/ and set `image: '/work/rleaguez.png'`, then render it.
+  // Screenshots live in public/work/. TODO: refresh with framed/branded versions when ready.
   image?: string;
 }
 
-// TODO: Confirm project pitches/tech badges and add real screenshots.
+// TODO: Confirm project pitches/tech badges.
 const PROJECTS: Project[] = [
   {
     name: 'RLeaguez',
@@ -21,6 +21,7 @@ const PROJECTS: Project[] = [
       'A recreational sports league platform for organizing teams, schedules, and standings — web and mobile.',
     tech: ['Next.js', 'React Native', 'NestJS', 'Prisma'],
     url: 'https://www.rleaguez.com/en',
+    image: '/work/rleaguez.png',
   },
   {
     name: '800Auto Two',
@@ -28,6 +29,7 @@ const PROJECTS: Project[] = [
       'On-demand towing and roadside assistance, connecting drivers with nearby operators in real time.',
     tech: ['React Native', 'Node.js', 'Maps API', 'Stripe'],
     url: 'https://www.1800autotow.com/',
+    image: '/work/autotow.png',
   },
   {
     name: 'NeuroVista Art AI',
@@ -35,6 +37,7 @@ const PROJECTS: Project[] = [
       'An AI-powered art studio that turns prompts and ideas into original, shareable generated artwork.',
     tech: ['Next.js', 'Python', 'OpenAI', 'PostgreSQL'],
     url: 'https://neuroartai.com/',
+    image: '/work/neuroartai.png',
   },
 ];
 
@@ -56,9 +59,20 @@ export default function WorkSection() {
             rel="noopener noreferrer"
             className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-950 dark:hover:border-orange-500/40"
           >
-            {/* Placeholder screenshot area — swap for a real image */}
-            <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-orange-100 to-orange-50 text-orange-400 dark:from-gray-800 dark:to-gray-900 dark:text-gray-600">
-              <ImageIcon className="h-10 w-10" />
+            <div className="relative aspect-video overflow-hidden border-b border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={`${project.name} screenshot`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center text-orange-400 dark:text-gray-600">
+                  <ImageIcon className="h-10 w-10" />
+                </div>
+              )}
             </div>
             <div className="flex flex-1 flex-col p-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
