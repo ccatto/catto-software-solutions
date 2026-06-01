@@ -2,8 +2,8 @@
 # fly.toml app configuration file for Backend API
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 
-app = 'my-app-api'
-primary_region = 'dfw'
+app = 'catto-software-solutions-api'
+primary_region = 'iad'
 
 [build]
   dockerfile = "Dockerfile"

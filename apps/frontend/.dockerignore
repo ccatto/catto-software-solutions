@@ -1,6 +1,14 @@
+# NOTE: The Fly build runs from the MONOREPO ROOT, so the root /.dockerignore is
+# what actually applies. This file only matters if you build with apps/frontend as
+# the context. Kept accurate to avoid surprises.
 *
 !package.json
 !yarn.lock
-!src/
+!app/
+!lib/
 !public/
-!next.config.js
+!messages/
+!i18n.ts
+!next.config.ts
+!tsconfig.json
+!middleware.ts

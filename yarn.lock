@@ -714,6 +714,11 @@
   resolved "https://registry.yarnpkg.com/@ccatto/nest-auth/-/nest-auth-1.0.0.tgz#1120d934d51ce87c43821625592306ff319d17ce"
   integrity sha512-scSetOQ/3VExKmnOSOTO+vtJOcsqm0FuIE7kQf1wKXSuWwiGuBuOseMwvEmSQZco0aivZQWod8u0NXu3g7N3bA==
 
+"@ccatto/nest-sms@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ccatto/nest-sms/-/nest-sms-1.0.0.tgz#e2cc8abb6465b71a6e78384cf561234ad2cb07f8"
+  integrity sha512-TtXVK9P6KUn1R8eYVSpQSgrGv7Yz9GqWuNJgAXffJdxwHDhMPZaMI8NWHvQxmVjG/c4/WkOncG3sMLWc8N6dRA==
+
 "@ccatto/profanity@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@ccatto/profanity/-/profanity-1.0.0.tgz#5880e0e65c598b74eb5ce62dc0d872682e8ff441"

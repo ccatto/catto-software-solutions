@@ -18,6 +18,8 @@
     "dev": "yarn workspaces run dev",
     "dev:backend": "cd apps/backend && yarn start:dev",
     "dev:frontend": "cd apps/frontend && yarn dev",
+    "deploy:frontend": "fly deploy --build-arg NEXT_PUBLIC_BASE_URL=https://cattosoftwaresolutions.com --build-arg NEXT_PUBLIC_GRAPHQL_ENDPOINT=https://api.cattosoftwaresolutions.com/graphql",
+    "deploy:backend": "fly deploy --config apps/backend/fly.toml --dockerfile apps/backend/Dockerfile",
     "lint": "yarn workspaces run lint",
     "mobile:ios:open": "cd apps/mobile && yarn ios:open",
     "mobile:ios:run": "cd apps/mobile && yarn ios:run",

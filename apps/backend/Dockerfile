@@ -13,10 +13,10 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # 2 Copy only what's needed for backend
+# Note: @ccatto/* come from the public npm registry — there is NO local packages/ dir.
 COPY package.json yarn.lock ./
 COPY apps/backend/package.json ./apps/backend/
 COPY apps/database/package.json ./apps/database/
-COPY packages ./packages
 
 # 3 Copy source code for backend and database
 COPY apps/backend ./apps/backend
@@ -30,7 +30,10 @@ RUN yarn install --frozen-lockfile --ignore-platform --ignore-scripts
 RUN cd /app/apps/database && npx prisma generate && yarn build
 
 # 6 Build the backend app (uses SWC builder)
-RUN cd /app/apps/backend && yarn build
+# Note: src/app.controller.ts imports ../package.json, so TypeScript computes rootDir
+# as the project root (not src/) and output lands at dist/src/main.js.
+RUN cd /app/apps/backend && yarn build && \
+    test -f /app/apps/backend/dist/src/main.js && echo "main.js OK" || (echo "main.js MISSING" && exit 1)
 
 # ----------- Production Stage - Image ------------
 FROM node:22-alpine
@@ -45,7 +48,6 @@ RUN apk add --no-cache python3 make g++
 COPY package.json yarn.lock ./
 COPY apps/backend/package.json ./apps/backend/
 COPY apps/database/package.json ./apps/database/
-COPY packages ./packages
 
 # Copy compiled output from builder stage
 COPY --from=builder /app/apps/backend/dist ./apps/backend/dist
@@ -55,12 +57,10 @@ COPY --from=builder /app/apps/database/generated ./apps/database/generated
 # Still need @prisma packages for the adapter
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/apps/database/prisma ./apps/database/prisma
-# Copy pre-built packages to avoid postinstall rebuild
-COPY --from=builder /app/packages/ui/dist ./packages/ui/dist
 
-# Install only production dependencies
-# Remove the root postinstall script to prevent @ccatto/ui rebuild (dist already copied)
-# This allows bcrypt native module to be built while skipping @ccatto/ui build
+# Install only production dependencies.
+# @ccatto/* resolve from the public npm registry (no local packages/ dir). Drop the
+# root postinstall (prisma generate + database build already done & copied above).
 RUN npm pkg delete scripts.postinstall && \
     yarn install --production --frozen-lockfile --ignore-platform
 
@@ -74,4 +74,6 @@ ENV NODE_ENV production
 EXPOSE 4000
 
 # Start the NestJS application
-CMD ["node", "apps/backend/dist/main.js"]
+# Note: dist/src/ path because app.controller.ts imports ../package.json, which
+# shifts the TypeScript output structure (rootDir becomes the project root).
+CMD ["node", "apps/backend/dist/src/main.js"]

@@ -38,6 +38,7 @@
     "@nestjs/throttler": "^6.5.0",
     "@ccatto/logger": "^1.0.0",
     "@ccatto/nest-auth": "^1.0.0",
+    "@ccatto/nest-sms": "^1.0.0",
     "@ccatto/profanity": "^1.0.0",
     "@simplewebauthn/server": "^11.0.0",
     "@simplewebauthn/types": "^11.0.0",
