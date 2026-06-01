@@ -1,0 +1,45 @@
+# Root .dockerignore for the frontend image build (context = repo root).
+# Mirrors rleaguez. Keep packages/*/dist out of ignore so prebuilt UI is available.
+
+!packages/ui/dist
+
+.git
+.github
+.vscode
+.idea
+*.swp
+*.swo
+
+# Docs / markdown (keep README)
+*.md
+!README.md
+docs
+
+# Mobile app (not part of the web build)
+apps/mobile
+
+# Tests
+e2e
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+**/test/
+**/tests/
+**/__tests__/
+
+# Host node_modules carry platform-specific binaries (e.g. @esbuild/darwin-x64);
+# the Docker build installs its own fresh deps.
+**/node_modules
+
+# Build artifacts
+apps/frontend/.next
+apps/backend/dist
+apps/database/dist
+apps/database/generated
+coverage
+
+# Secrets — never ship into the image
+.env
+.env.*
+!.env.example
