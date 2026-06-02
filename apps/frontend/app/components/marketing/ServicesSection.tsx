@@ -2,6 +2,7 @@ import {
   Smartphone,
   Globe,
   Sparkles,
+  RefreshCw,
   Rocket,
   LifeBuoy,
   type LucideIcon,
@@ -28,6 +29,12 @@ const SERVICES: Service[] = [
     title: 'Web Apps & Websites',
     description:
       'Marketing sites, dashboards, and full web platforms — responsive, accessible, and built to scale.',
+  },
+  {
+    icon: RefreshCw,
+    title: 'Update & Modernize Existing Apps',
+    description:
+      "Already have a web or mobile app? We jump into your existing codebase to add features, fix bugs, refresh the design, and bring it up to modern standards.",
   },
   {
     icon: Sparkles,
