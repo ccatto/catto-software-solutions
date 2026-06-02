@@ -56,14 +56,7 @@ export default function HeaderCatto() {
 
         {/* Right side actions */}
         <div className="flex items-center gap-3">
-          {/* Brand mark (favicon) */}
-          <img
-            src="/favicon.svg"
-            alt="Catto Software Solutions logo"
-            width={32}
-            height={32}
-            className="h-8 w-8 rounded-md"
-          />
+          {/* Brand mark removed — the wordmark on the left already carries the CSS mark. */}
           <ThemeToggleCatto />
 
           {session?.user ? (
