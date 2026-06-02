@@ -11,6 +11,10 @@ import { ctaPrimary, SECTIONS } from './styles';
 // Placeholder until chris@cattosoftwaresolutions.com forwarding is set up (see docs/APP-BACKLOG.md).
 const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 
+// Minimum project-description length. Must match the backend DTO's @MinLength
+// (apps/backend/.../create-contact-message.input.ts) so client + server agree.
+const MIN_MESSAGE_LENGTH = 20;
+
 // Project types mirror the Services section.
 const PROJECT_TYPES = [
   'Mobile App (iOS + Android)',
@@ -28,7 +32,10 @@ const inputClasses =
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [messageLength, setMessageLength] = useState(0);
   const [submitContact, { loading }] = useMutation(SUBMIT_CONTACT_MESSAGE);
+
+  const messageTooShort = messageLength > 0 && messageLength < MIN_MESSAGE_LENGTH;
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,9 +52,9 @@ export default function ContactSection() {
       setError('Please enter your name.');
       return;
     }
-    if (message.length < 10) {
+    if (message.length < MIN_MESSAGE_LENGTH) {
       setError(
-        `Please add a bit more detail — your message needs at least 10 characters (currently ${message.length}).`,
+        `Please add a bit more detail — your message needs at least ${MIN_MESSAGE_LENGTH} characters (currently ${message.length}).`,
       );
       return;
     }
@@ -71,6 +78,7 @@ export default function ContactSection() {
       }
 
       form.reset();
+      setMessageLength(0);
       setSubmitted(true);
     } catch (err) {
       // Surface the backend validation message when there is one; otherwise a
@@ -184,11 +192,25 @@ export default function ContactSection() {
                 id="message"
                 name="message"
                 required
-                minLength={10}
+                minLength={MIN_MESSAGE_LENGTH}
                 rows={5}
-                placeholder="What are you building, and what's your timeline?"
+                onChange={(e) => setMessageLength(e.target.value.trim().length)}
+                placeholder="What are you building, and what's your timeline? A sentence or two helps us give you a useful first reply."
                 className={inputClasses}
               />
+              <p
+                className={`mt-1.5 text-xs ${
+                  messageTooShort
+                    ? 'text-red-600 dark:text-red-400'
+                    : 'text-gray-500 dark:text-gray-400'
+                }`}
+              >
+                {messageTooShort
+                  ? `${MIN_MESSAGE_LENGTH - messageLength} more character${
+                      MIN_MESSAGE_LENGTH - messageLength === 1 ? '' : 's'
+                    } needed`
+                  : `${messageLength}/${MIN_MESSAGE_LENGTH} characters minimum`}
+              </p>
             </div>
 
             {error && (

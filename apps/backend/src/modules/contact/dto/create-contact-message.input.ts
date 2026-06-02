@@ -33,7 +33,7 @@ export class CreateContactMessageInput {
 
   @Field()
   @IsString()
-  @MinLength(10)
+  @MinLength(20)
   @MaxLength(5000)
   @NoProfanity()
   message: string;
