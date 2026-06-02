@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, ApolloError } from '@apollo/client';
 import { Mail, Send, CheckCircle2 } from 'lucide-react';
 import Section from './Section';
 import SectionHeading from './SectionHeading';
@@ -36,14 +36,30 @@ export default function ContactSection() {
     const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
 
     setError(null);
+
+    // Client-side validation mirrors the backend DTO so users get instant,
+    // specific feedback instead of a generic server error.
+    const name = data.name?.trim() ?? '';
+    const message = data.message?.trim() ?? '';
+    if (name.length < 2) {
+      setError('Please enter your name.');
+      return;
+    }
+    if (message.length < 10) {
+      setError(
+        `Please add a bit more detail — your message needs at least 10 characters (currently ${message.length}).`,
+      );
+      return;
+    }
+
     try {
       const { data: res } = await submitContact({
         variables: {
           input: {
-            name: data.name,
-            email: data.email,
+            name,
+            email: data.email?.trim(),
             projectType: data.projectType,
-            message: data.message,
+            message,
           },
         },
       });
@@ -56,9 +72,19 @@ export default function ContactSection() {
 
       form.reset();
       setSubmitted(true);
-    } catch {
+    } catch (err) {
+      // Surface the backend validation message when there is one; otherwise a
+      // friendly fallback that points at the direct email.
+      const gqlMessage =
+        err instanceof ApolloError
+          ? (err.graphQLErrors[0]?.extensions?.originalError as
+              | { message?: string | string[] }
+              | undefined)?.message
+          : undefined;
+      const detail = Array.isArray(gqlMessage) ? gqlMessage[0] : gqlMessage;
       setError(
-        'Sorry — we could not send your message. Please email us directly instead.',
+        detail ||
+          'Sorry — we could not send your message. Please email us directly instead.',
       );
     }
   }
@@ -158,6 +184,7 @@ export default function ContactSection() {
                 id="message"
                 name="message"
                 required
+                minLength={10}
                 rows={5}
                 placeholder="What are you building, and what's your timeline?"
                 className={inputClasses}
