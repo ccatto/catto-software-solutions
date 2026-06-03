@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
-// Placeholder until chris@cattosoftwaresolutions.com forwarding is set up (see docs/APP-BACKLOG.md).
-const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 const SOCIALS = [
   {
     label: 'GitHub',
@@ -51,13 +49,14 @@ export default function FooterCatto() {
           <p>© {year} Catto Software Solutions. All rights reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="inline-flex items-center gap-1 hover:text-orange-600 dark:hover:text-orange-400"
+            {/* Email intentionally not exposed — route people to the contact form
+                instead to avoid scraping/spam. */}
+            <Link
+              href="/#contact"
+              className="hover:text-orange-600 dark:hover:text-orange-400"
             >
-              <Mail className="h-3.5 w-3.5" />
-              {CONTACT_EMAIL}
-            </a>
+              Contact
+            </Link>
             <Link
               href="/privacy"
               className="hover:text-orange-600 dark:hover:text-orange-400"

@@ -1,18 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Mail } from 'lucide-react';
+import { ArrowLeft, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Support — Catto Software Solutions',
   description: 'Get help and support from Catto Software Solutions.',
 };
 
-const CONTACT_EMAIL = 'chriscatto3@gmail.com';
-
 const FAQS = [
   {
     q: 'How do I start a project?',
-    a: 'Use the “Start a Project” form on our homepage or email us directly. Tell us what you’re building and your timeline, and we’ll follow up to scope it out.',
+    a: 'Use the “Start a Project” form on our homepage. Tell us what you’re building and your timeline, and we’ll follow up to scope it out.',
   },
   {
     q: 'What kind of projects do you take on?',
@@ -50,17 +48,17 @@ export default function SupportPage() {
       <div className="mt-6 space-y-6 leading-relaxed text-gray-600 dark:text-gray-300">
         <p>
           Need help or have a question? We&rsquo;re here for you. The fastest way
-          to reach us is by email, and we aim to respond within one business
-          day.
+          to reach us is through our contact form, and we aim to respond within
+          one business day.
         </p>
 
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
+        <Link
+          href="/#contact"
           className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
         >
-          <Mail className="h-4 w-4" />
-          Email support
-        </a>
+          <MessageSquare className="h-4 w-4" />
+          Contact us
+        </Link>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-50">
