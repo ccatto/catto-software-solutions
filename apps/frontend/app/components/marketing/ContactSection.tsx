@@ -3,14 +3,11 @@
 import { useState, type FormEvent } from 'react';
 import { useMutation, ApolloError } from '@apollo/client';
 import { useRecaptcha } from '@ccatto/react-contact';
-import { Mail, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Send, CheckCircle2, ShieldCheck } from 'lucide-react';
 import Section from './Section';
 import SectionHeading from './SectionHeading';
 import { SUBMIT_CONTACT_MESSAGE } from '@lib/graphql/contact.mutations';
 import { ctaPrimary, SECTIONS } from './styles';
-
-// Placeholder until chris@cattosoftwaresolutions.com forwarding is set up (see docs/APP-BACKLOG.md).
-const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 
 // Minimum project-description length. Must match the backend DTO's @MinLength
 // (apps/backend/.../create-contact-message.input.ts) so client + server agree.
@@ -249,14 +246,8 @@ export default function ContactSection() {
         )}
 
         <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-          Prefer email?{' '}
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center gap-1 font-medium text-orange-600 hover:text-orange-700 dark:text-orange-400"
-          >
-            <Mail className="h-3.5 w-3.5" />
-            {CONTACT_EMAIL}
-          </a>
+          We&apos;ll reply to the email address you provide above, usually within
+          one business day.
         </p>
       </div>
     </Section>

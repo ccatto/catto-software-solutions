@@ -9,8 +9,7 @@ export const metadata: Metadata = {
 
 // NOTE: This is a solid starting draft tailored to a software agency based in
 // Boca Raton, Florida. Have an attorney review it before launch or app-store
-// submission. Update CONTACT_EMAIL / company details if they change.
-const CONTACT_EMAIL = 'chriscatto3@gmail.com';
+// submission. Update company details if they change.
 const EFFECTIVE_DATE = 'May 30, 2026';
 
 function Heading({ children }: { children: React.ReactNode }) {
@@ -128,13 +127,13 @@ export default function PrivacyPage() {
 
         <Heading>Contact</Heading>
         <p>
-          Questions about this policy? Email{' '}
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
+          Questions about this policy? Reach us through our{' '}
+          <Link
+            href="/#contact"
             className="font-medium text-orange-600 hover:text-orange-700 dark:text-orange-400"
           >
-            {CONTACT_EMAIL}
-          </a>
+            contact form
+          </Link>
           .
         </p>
       </div>

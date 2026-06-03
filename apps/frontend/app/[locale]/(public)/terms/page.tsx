@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 
 // NOTE: Starting draft, Florida-governed. Have an attorney review before launch,
 // especially if you add subscriptions, payments, or paid digital content.
-const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 const EFFECTIVE_DATE = 'May 30, 2026';
 
 function Heading({ children }: { children: React.ReactNode }) {
@@ -108,13 +107,13 @@ export default function TermsPage() {
 
         <Heading>Contact</Heading>
         <p>
-          Questions about these Terms? Email{' '}
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
+          Questions about these Terms? Reach us through our{' '}
+          <Link
+            href="/#contact"
             className="font-medium text-orange-600 hover:text-orange-700 dark:text-orange-400"
           >
-            {CONTACT_EMAIL}
-          </a>
+            contact form
+          </Link>
           .
         </p>
       </div>
