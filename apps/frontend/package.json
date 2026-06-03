@@ -35,6 +35,7 @@
     "@ccatto/logger": "^1.0.0",
     "@ccatto/profanity": "^1.0.0",
     "@ccatto/react-auth": "^1.1.0",
+    "@ccatto/react-contact": "^1.0.0",
     "@ccatto/react-push": "^1.0.0",
     "@ccatto/ui": "^1.5.0",
     "@hookform/resolvers": "^5.2.2",

@@ -23,12 +23,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { CattoSmsModule } from '@ccatto/nest-sms';
+import { CattoRecaptchaModule } from '@ccatto/nest-recaptcha';
 
 // Optional @ccatto/* modules - uncomment as needed:
 // import { CattoEmailModule } from '@ccatto/nest-email';
 // import { CattoPaymentsModule } from '@ccatto/nest-payments';
 // import { CattoPushModule } from '@ccatto/nest-push';
-// import { CattoRecaptchaModule } from '@ccatto/nest-recaptcha';
 
 @Module({
   imports: [
@@ -118,14 +118,17 @@ import { CattoSmsModule } from '@ccatto/nest-sms';
     //     firebaseServiceAccountJson: config.get('FIREBASE_SERVICE_ACCOUNT_JSON'),
     //   }),
     // }),
-    // CattoRecaptchaModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    //   useFactory: (config: ConfigService) => ({
-    //     secretKey: config.get('RECAPTCHA_SECRET_KEY'),
-    //     scoreThreshold: 0.5,
-    //   }),
-    // }),
+    // reCAPTCHA v3 — verifies contact-form submissions. Global module.
+    // No secretKey (env unset) => verification is skipped (dev/no-key mode).
+    CattoRecaptchaModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        secretKey: config.get('RECAPTCHA_SECRET_KEY'),
+        scoreThreshold: 0.5,
+      }),
+    }),
+
     // SMS notifications (Telnyx) — powers the contact form. Global module.
     CattoSmsModule.forRootAsync({
       imports: [ConfigModule],

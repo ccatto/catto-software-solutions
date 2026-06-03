@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from 'react';
 import { useMutation, ApolloError } from '@apollo/client';
-import { Mail, Send, CheckCircle2 } from 'lucide-react';
+import { useRecaptcha } from '@ccatto/react-contact';
+import { Mail, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
 import Section from './Section';
 import SectionHeading from './SectionHeading';
 import { SUBMIT_CONTACT_MESSAGE } from '@lib/graphql/contact.mutations';
@@ -14,6 +15,10 @@ const CONTACT_EMAIL = 'chriscatto3@gmail.com';
 // Minimum project-description length. Must match the backend DTO's @MinLength
 // (apps/backend/.../create-contact-message.input.ts) so client + server agree.
 const MIN_MESSAGE_LENGTH = 20;
+
+// reCAPTCHA v3 site key. When unset, useRecaptcha no-ops and no token is sent
+// (backend then skips verification) — so the form works with or without it.
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 // Project types mirror the Services section.
 const PROJECT_TYPES = [
@@ -34,6 +39,8 @@ export default function ContactSection() {
   const [error, setError] = useState<string | null>(null);
   const [messageLength, setMessageLength] = useState(0);
   const [submitContact, { loading }] = useMutation(SUBMIT_CONTACT_MESSAGE);
+  // Loads reCAPTCHA v3 and gives us executeRecaptcha(); no-ops without a site key.
+  const { executeRecaptcha } = useRecaptcha(RECAPTCHA_SITE_KEY, 'contact_form');
 
   const messageTooShort = messageLength > 0 && messageLength < MIN_MESSAGE_LENGTH;
 
@@ -60,6 +67,9 @@ export default function ContactSection() {
     }
 
     try {
+      // Get a fresh reCAPTCHA token (undefined when no site key is configured).
+      const recaptchaToken = await executeRecaptcha();
+
       const { data: res } = await submitContact({
         variables: {
           input: {
@@ -68,6 +78,7 @@ export default function ContactSection() {
             projectType: data.projectType,
             message,
           },
+          recaptchaToken,
         },
       });
 
@@ -217,14 +228,23 @@ export default function ContactSection() {
               <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className={`${ctaPrimary} w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto`}
-            >
-              {loading ? 'Sending…' : 'Send message'}
-              <Send className="h-4 w-4" />
-            </button>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                disabled={loading}
+                className={`${ctaPrimary} w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto`}
+              >
+                {loading ? 'Sending…' : 'Send message'}
+                <Send className="h-4 w-4" />
+              </button>
+
+              {RECAPTCHA_SITE_KEY && (
+                <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500">
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  Protected by reCAPTCHA
+                </span>
+              )}
+            </div>
           </form>
         )}
 
