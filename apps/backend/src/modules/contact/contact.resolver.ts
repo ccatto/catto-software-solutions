@@ -17,8 +17,12 @@ export class ContactResolver {
   })
   async submitContactMessage(
     @Args('input') input: CreateContactMessageInput,
+    @Args('recaptchaToken', { nullable: true }) recaptchaToken?: string,
   ): Promise<ContactResponse> {
-    const sent = await this.contactService.submitContactMessage(input);
+    const sent = await this.contactService.submitContactMessage(
+      input,
+      recaptchaToken,
+    );
     return sent
       ? { success: true, message: 'Thanks — your message was sent.' }
       : {

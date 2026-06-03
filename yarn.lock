@@ -714,6 +714,11 @@
   resolved "https://registry.yarnpkg.com/@ccatto/nest-auth/-/nest-auth-1.0.0.tgz#1120d934d51ce87c43821625592306ff319d17ce"
   integrity sha512-scSetOQ/3VExKmnOSOTO+vtJOcsqm0FuIE7kQf1wKXSuWwiGuBuOseMwvEmSQZco0aivZQWod8u0NXu3g7N3bA==
 
+"@ccatto/nest-recaptcha@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ccatto/nest-recaptcha/-/nest-recaptcha-1.0.0.tgz#b25eb17acd007d68c6b628648f3c8680acadc5a6"
+  integrity sha512-zUlzAAE1HkMxK1DUImNmDRFLChA5hFvXhvHldURpyfwiAe72/xAZfdSgZh8aa8NJEnj8qnZEJ5SY/QfzgA0vYQ==
+
 "@ccatto/nest-sms@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@ccatto/nest-sms/-/nest-sms-1.0.0.tgz#e2cc8abb6465b71a6e78384cf561234ad2cb07f8"
@@ -730,6 +735,13 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ccatto/react-auth/-/react-auth-1.1.0.tgz#97eb093bc23f00cc599977d3435a9ced81b5a9c3"
   integrity sha512-KX49mCRtooTzgPhzkIrIBjgAFC2kwO/lSd8MA3Wjp0jlFAMkxRrP7PbKPGKfg2S7abjIMooDiivVHlWg5B165Q==
+
+"@ccatto/react-contact@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ccatto/react-contact/-/react-contact-1.0.0.tgz#3803336c302a43363d6ed9664033448a6eb34226"
+  integrity sha512-C48tTbsDulI1sBJSW486Zh58VRiC03XPvOsWUhM1zIm7tKjVrzEfR2nvJFK6z0KHa/jduicknHw+mTSdtj6WqQ==
+  dependencies:
+    "@ccatto/logger" "^1.0.0"
 
 "@ccatto/react-push@^1.0.0":
   version "1.0.0"
