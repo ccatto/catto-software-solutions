@@ -3,18 +3,22 @@ import SectionHeading from './SectionHeading';
 import { SECTIONS } from './styles';
 
 const TECH_STACK = [
-  'Swift',
-  'Kotlin',
   'React',
   'React Native',
   'Next.js',
+  'Angular',
   'TypeScript',
   'Node.js',
   'NestJS',
   'Python',
   'PostgreSQL',
   'Prisma',
+  'Capacitor',
+  'Flutter',
   'AWS',
+  'Azure',
+  'Swift',
+  'Kotlin',
 ];
 
 // About / Skills — short bio, experience stat, tech badges.
