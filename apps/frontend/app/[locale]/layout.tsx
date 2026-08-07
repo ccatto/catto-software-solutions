@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import dynamicImport from 'next/dynamic';
 import { notFound } from 'next/navigation';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import cn from 'clsx';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
@@ -72,6 +73,10 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  // Google Analytics (GA4). Only loads when the Measurement ID is configured,
+  // so local/dev builds without the env var send no traffic to GA.
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <head>
@@ -101,6 +106,7 @@ export default async function LocaleLayout({
             <FooterCatto />
           </Providers>
         </NextIntlClientProvider>
+        {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       </body>
     </html>
   );

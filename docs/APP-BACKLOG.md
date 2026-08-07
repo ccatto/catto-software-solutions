@@ -36,6 +36,14 @@
 - **Requires the backend to be deployed/running** for production (see deployment item #10).
 - **Follow-ups:** add `@NoProfanity()` to the input DTO + reCAPTCHA (`@ccatto/nest-recaptcha`) for spam protection; optionally add email copy via `@ccatto/nest-email`; optionally persist submissions to the DB (Prisma) like rleaguez.
 
+### 3b. Admin page — internal "business stuff" dashboard (behind login)
+- Goal: when Chris signs in, an **admin-only** area surfaces the business internals — e.g. contact-form submissions, basic site/traffic stats, and a home for future business tooling.
+- **Access control:** gate behind an `isAdmin`/role check on the authenticated user (both auth systems — Better Auth OAuth session *and* JWT). Non-admins get 404/redirect, never a visible link.
+- **Location:** new route group like `apps/frontend/app/[locale]/(admin)/admin/` with its own layout; guard in middleware + server component.
+- **First surface ideas:** list `submitContactMessage` submissions (ties to item #3 — persist them to Prisma so there's something to show), analytics snapshot, quick links.
+- **Backend:** add an admin-guarded GraphQL query for contact messages; reuse NestJS auth guards/decorators in `src/auth/`.
+- Start small: one page, one role check, one data list. Grow from there.
+
 ---
 
 ## Medium priority
@@ -53,6 +61,13 @@
 ### 6b. Align site accent to RZ Orange (#FF910C)
 - The site currently uses Tailwind `orange-500` (`#F97316`) / `orange-600` (`#EA580C`) for accents; the official brand orange is **RZ Orange `#FF910C`** (see `BRAND.md`).
 - Define a custom Tailwind color / CSS variable for the brand orange and replace `orange-500`/`orange-600` usages across the marketing components for exact brand consistency.
+
+### 6c. Google Analytics (GA4) for `cattosoftwaresolutions.com` — DONE (code), pending deploy
+- **✅ Console:** GA4 property "Catto Software Solutions" created under the **ChrisCatto** account, Web data stream for `https://cattosoftwaresolutions.com`. **Measurement ID: `G-9JPYGQT3NS`.**
+- **✅ Code:** `@next/third-parties@16.1.6` added; `<GoogleAnalytics gaId={...}/>` rendered in `app/[locale]/layout.tsx`, gated on `NEXT_PUBLIC_GA_MEASUREMENT_ID`. ID baked into the Dockerfile ARG/ENV (public, safe). Blank in `.env.local` so dev browsing doesn't pollute stats.
+- **⏳ Remaining:** `fly deploy` to ship it, then confirm hits in GA **Realtime**.
+- **Follow-ups (optional):** add [Search Console](https://search.google.com/search-console) for SEO; consider Cloudflare Web Analytics (no cookie banner) if the domain moves behind Cloudflare.
+- Note: the pickle app (`picklepaddlereviews.com`) gets its own separate GA4 property — tracked in the `pickle-paddle-reviews` repo's launch doc, not here.
 
 ### 7. Attorney review of legal pages
 - Privacy, Terms, and Support pages are solid drafts (Florida-governed) but should be reviewed by a lawyer before public launch / app-store submission.
