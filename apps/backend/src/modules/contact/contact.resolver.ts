@@ -1,8 +1,13 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { UseGuards } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
+import { GqlAuthGuard } from '../../auth/guards/gql-auth.guard';
+import { GqlRolesGuard } from '../../auth/guards/gql-roles.guard';
+import { Roles } from '../../auth/decorators/roles.decorator';
 import { ContactService } from './contact.service';
 import { CreateContactMessageInput } from './dto/create-contact-message.input';
 import { ContactResponse } from './dto/contact-response.type';
+import { ContactMessage } from './dto/contact-message.type';
 
 // Public mutation (no auth guard). Rate-limited to 3 submissions/hour per client
 // on top of the global throttler — mirrors the rleaguez contact resolver.
@@ -29,5 +34,19 @@ export class ContactResolver {
           success: false,
           message: 'Could not send your message. Please email us instead.',
         };
+  }
+
+  // Admin-only: list persisted contact inquiries for the dashboard.
+  @UseGuards(GqlAuthGuard, GqlRolesGuard)
+  @Roles('platform_admin')
+  @Query(() => [ContactMessage], {
+    description:
+      'List persisted contact-form inquiries, newest first (platform_admin only).',
+  })
+  async contactMessages(
+    @Args('limit', { type: () => Int, nullable: true, defaultValue: 100 })
+    limit: number,
+  ): Promise<ContactMessage[]> {
+    return this.contactService.listContactMessages(limit);
   }
 }
