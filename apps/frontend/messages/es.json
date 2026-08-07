@@ -79,6 +79,20 @@
     "description": "Esta es una pagina protegida que requiere autenticacion.",
     "loading": "Cargando…"
   },
+  "admin": {
+    "title": "Administracion",
+    "welcome": "Panel del negocio",
+    "loading": "Cargando…",
+    "denied": "No tienes acceso a esta pagina.",
+    "contactTitle": "Mensajes de contacto",
+    "contactBody": "Las consultas del formulario de contacto apareceran aqui una vez que se guarden en la base de datos.",
+    "contactBadge": "Falta persistencia",
+    "analyticsTitle": "Analiticas",
+    "analyticsBody": "Estadisticas de trafico y visitantes. Conecta Google Analytics para ver datos en vivo.",
+    "analyticsBadge": "Configuracion pendiente",
+    "linksTitle": "Enlaces rapidos",
+    "linksBody": "Accesos directos a las herramientas para administrar el negocio."
+  },
   "about": {
     "title": "Acerca de",
     "description": "Esta app fue construida usando la plantilla Catto App."
