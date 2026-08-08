@@ -16,7 +16,7 @@
     "db:seed": "cd apps/database && dotenv -e ../backend/.env.local -e ../backend/.env -- npx prisma db seed",
     "db:set-role": "cd apps/database && dotenv -e ../backend/.env.local -e ../backend/.env -- tsx scripts/set-role.ts",
     "db:studio": "cd apps/database && dotenv -e ../backend/.env.local -e ../backend/.env -- npx prisma studio",
-    "dev": "yarn workspaces run dev",
+    "dev": "turbo run dev --filter=@ccatto-app/frontend --filter=@ccatto-app/backend",
     "dev:backend": "cd apps/backend && yarn start:dev",
     "dev:frontend": "cd apps/frontend && yarn dev",
     "deploy:frontend": "fly deploy --build-arg NEXT_PUBLIC_BASE_URL=https://cattosoftwaresolutions.com --build-arg NEXT_PUBLIC_GRAPHQL_ENDPOINT=https://api.cattosoftwaresolutions.com/graphql",
