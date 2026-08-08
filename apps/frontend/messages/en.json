@@ -88,7 +88,7 @@
     "contactBody": "Inquiries from the site contact form will appear here once they're saved to the database.",
     "contactBadge": "Needs persistence",
     "contactLoading": "Loading submissions…",
-    "contactError": "Couldn't load submissions. Make sure you're signed in with email/password as an admin.",
+    "contactError": "Couldn't load submissions. Make sure you're signed in as an admin (platform_admin).",
     "contactEmpty": "No contact submissions yet.",
     "contactCount": "{count} submission(s)",
     "analyticsTitle": "Analytics",

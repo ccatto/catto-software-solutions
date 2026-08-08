@@ -88,7 +88,7 @@
     "contactBody": "Las consultas del formulario de contacto apareceran aqui una vez que se guarden en la base de datos.",
     "contactBadge": "Falta persistencia",
     "contactLoading": "Cargando mensajes…",
-    "contactError": "No se pudieron cargar los mensajes. Inicia sesion con correo y contrasena como administrador.",
+    "contactError": "No se pudieron cargar los mensajes. Inicia sesion como administrador (platform_admin).",
     "contactEmpty": "Aun no hay mensajes de contacto.",
     "contactCount": "{count} mensaje(s)",
     "analyticsTitle": "Analiticas",
