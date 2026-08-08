@@ -33,8 +33,8 @@ yarn db:push
 yarn dev
 ```
 
-Frontend: http://localhost:3000
-Backend: http://localhost:4000/graphql
+Frontend: http://localhost:3222
+Backend: http://localhost:4222/graphql
 
 ## Documentation
 

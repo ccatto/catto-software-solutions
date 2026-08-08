@@ -37,7 +37,7 @@ export interface LoginResponse {
 }
 
 const GRAPHQL_ENDPOINT =
-  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? 'http://localhost:4000/graphql';
+  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? 'http://localhost:4222/graphql';
 
 async function gqlRequest<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
   const res = await fetch(GRAPHQL_ENDPOINT, {

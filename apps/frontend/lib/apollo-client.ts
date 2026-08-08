@@ -13,7 +13,7 @@ import { sessionStore } from './stores/session-store';
 
 // TODO: Update these URLs for your deployment
 const graphqlUri =
-  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql';
+  process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'http://localhost:4222/graphql';
 
 const httpLink = createHttpLink({
   uri: graphqlUri,

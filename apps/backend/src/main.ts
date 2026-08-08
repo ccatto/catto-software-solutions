@@ -17,13 +17,13 @@ async function bootstrap() {
     origin:
       process.env.NODE_ENV === 'production'
         ? [process.env.CORS_ORIGIN || 'https://yourdomain.com']
-        : ['http://localhost:3000', 'http://localhost:3001'],
+        : ['http://localhost:3222', 'http://localhost:3000', 'http://localhost:3001'],
     credentials: true, // If you need to send cookies or auth headers
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id'],
   });
 
-  const port = process.env.PORT ?? 4000;
+  const port = process.env.PORT ?? 4222;
   await app.listen(port);
   app.get(Logger).log(`Server running at http://localhost:${port}`);
 }

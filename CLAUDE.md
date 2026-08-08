@@ -27,8 +27,8 @@ catto-app-template/
 
 ```bash
 yarn dev              # Run all apps
-yarn dev:frontend     # Frontend only (http://localhost:3000)
-yarn dev:backend      # Backend only (http://localhost:4000/graphql)
+yarn dev:frontend     # Frontend only (http://localhost:3222)
+yarn dev:backend      # Backend only (http://localhost:4222/graphql)
 yarn build            # Build everything
 yarn db:push          # Push Prisma schema to DB
 yarn db:studio        # Open Prisma Studio

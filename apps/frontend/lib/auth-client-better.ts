@@ -46,7 +46,7 @@ export interface EnrichedSession {
 
 // Create the auth client
 export const authClient = createAuthClient({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3222',
   fetchOptions: {
     credentials: 'include',
   },
