@@ -1,7 +1,47 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm search *)"
+      "Bash(npm search *)",
+      "Bash(node -e \"console.log\\(JSON.stringify\\(require\\('./messages/es.json'\\).dashboard,null,2\\)\\)\")",
+      "Bash(npx prettier *)",
+      "Bash(node -e \"require\\('./messages/en.json'\\); require\\('./messages/es.json'\\); console.log\\('both en.json + es.json parse OK'\\)\")",
+      "Bash(yarn add *)",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('@next/third-parties/google'\\)\\)\\)\")",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(xargs cat)",
+      "Bash(yarn prisma:generate)",
+      "Bash(yarn db:push)",
+      "Bash(awk -F= '/^DATABASE_URL=/{print \\($2!=\"\"? \"set \\(non-empty\\)\":\"empty\"\\)}' apps/backend/.env.local)",
+      "Bash(dotenv -e ../backend/.env.local -- npx prisma db push)",
+      "Bash(yarn dotenv *)",
+      "Bash(/Users/chriscatto/Documents/GitK8/catto-software-solutions/node_modules/.bin/dotenv -e ../backend/.env.local -- npx prisma db push)",
+      "Bash(node -e \"require\\('./apps/frontend/messages/en.json'\\); require\\('./apps/frontend/messages/es.json'\\); console.log\\('en+es OK'\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(yarn workspace *)",
+      "Bash(node -e \"const p=require\\('./apps/database/package.json'\\); console.log\\('name:',p.name,'main:',p.main\\); console.log\\('scripts:',JSON.stringify\\(p.scripts\\)\\); console.log\\('deps:',Object.keys\\(p.dependencies||{}\\).join\\(', '\\)\\)\")",
+      "Bash(node -e \"require.resolve\\('@prisma/adapter-neon'\\); console.log\\('adapter-neon OK'\\)\")",
+      "Bash(node -e \"const d=require\\('./apps/database/dist/index.js'\\); console.log\\(Object.keys\\(d\\).filter\\(k=>/Prisma|Client|UserRole/.test\\(k\\)\\).join\\(', '\\)\\)\")",
+      "Bash(yarn db:set-role chriscatto3@gmail.com)",
+      "Bash(grep -vE \"^yarn run|^\\\\\\\\$|warning|npm warn|Loaded Prisma|Done in\")",
+      "Bash(node -e \"require\\('./apps/frontend/messages/en.json'\\);require\\('./apps/frontend/messages/es.json'\\);console.log\\('JSON OK'\\)\")",
+      "Bash(lsof -nP -iTCP -sTCP:LISTEN)",
+      "Bash(awk '{print $1, $2, $9}')",
+      "Bash(yarn dev *)",
+      "Bash(yarn dev:frontend *)",
+      "Bash(node *)",
+      "Bash(pkill -f \"next dev -p 3222\")",
+      "Bash(lsof -nP -iTCP:3222 -sTCP:LISTEN)",
+      "Bash(curl -s -o /dev/null -w \"register page -> HTTP %{http_code}\\\\n\" http://localhost:3222/en/signin/register)",
+      "Bash(curl -s -o /tmp/su.txt -w \"HTTP %{http_code}\\\\n\" -X POST http://localhost:3222/api/auth/sign-up/email -H \"Content-Type: application/json\" -d '{\"name\":\"Verify Test\",\"email\":\"verify-test@cattotest.dev\",\"password\":\"testpass12345\"}')",
+      "Read(//tmp/**)",
+      "Bash(./node_modules/.bin/dotenv *)",
+      "Bash(grep -vE \"^yarn run|^\\\\\\\\$|warning|npm warn|Loaded Prisma|Done in|info Visit|error Command\")",
+      "Bash(awk '{print $1,$2,$9}')",
+      "Bash(lsof -nP -iTCP:4222 -sTCP:LISTEN)",
+      "Bash(curl -s -o /dev/null -w \"register 3222 -> HTTP %{http_code}\\\\n\" http://localhost:3222/en/signin/register)",
+      "Bash(curl -s -o /dev/null -w \"graphql  4222 -> HTTP %{http_code}\\\\n\" \"http://localhost:4222/graphql\")"
     ]
   }
 }
