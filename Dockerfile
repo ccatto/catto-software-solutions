@@ -19,6 +19,8 @@ FROM base AS build
 # Public env baked into the client bundle at build time.
 ARG NEXT_PUBLIC_BASE_URL="https://cattosoftwaresolutions.com"
 ARG NEXT_PUBLIC_GRAPHQL_ENDPOINT="https://api.cattosoftwaresolutions.com/graphql"
+# Google Analytics (GA4) Measurement ID — public, safe to bake in.
+ARG NEXT_PUBLIC_GA_MEASUREMENT_ID="G-9JPYGQT3NS"
 
 # System deps for native modules + Prisma (openssl).
 RUN apt-get update -qq && \
@@ -55,6 +57,7 @@ RUN cd /app/apps/frontend && yarn add sharp --ignore-engines --force
 # Build the Next.js app (standalone output).
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
 ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT=$NEXT_PUBLIC_GRAPHQL_ENDPOINT
+ENV NEXT_PUBLIC_GA_MEASUREMENT_ID=$NEXT_PUBLIC_GA_MEASUREMENT_ID
 RUN cd /app/apps/frontend && yarn run build
 
 # ---------------- Production stage ----------------

@@ -49,8 +49,8 @@ yarn db:studio
 yarn dev
 
 # Or run individually:
-yarn dev:frontend    # http://localhost:3000
-yarn dev:backend     # http://localhost:4000/graphql
+yarn dev:frontend    # http://localhost:3222
+yarn dev:backend     # http://localhost:4222/graphql
 ```
 
 ## Project Structure

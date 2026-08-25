@@ -15,6 +15,27 @@ type AuthUser {
   role: String!
 }
 
+type ContactMessage {
+  createdAt: DateTime!
+  email: String!
+  id: ID!
+  message: String!
+  name: String!
+  projectType: String!
+}
+
+type ContactResponse {
+  message: String!
+  success: Boolean!
+}
+
+input CreateContactMessageInput {
+  email: String!
+  message: String!
+  name: String!
+  projectType: String!
+}
+
 input CreateUserInput {
   email: String!
   image: String
@@ -55,6 +76,11 @@ type Mutation {
   registerUser(input: RegisterInput!): AuthResponse!
   renamePasskey(friendlyName: String!, passkeyId: String!): PasskeyOperationResult!
   resetPassword(newPassword: String!, resetToken: String!): ResetPasswordResponse!
+
+  """
+  Submit a contact-form inquiry; notifies the team via SMS (public — no auth).
+  """
+  submitContactMessage(input: CreateContactMessageInput!, recaptchaToken: String): ContactResponse!
   updateUser(data: UpdateUserInput!): User!
   verifyPasskeyAuthentication(input: VerifyPasskeyAuthenticationInput!): AuthResponse!
   verifyPasskeyRegistration(input: VerifyPasskeyRegistrationInput!): PasskeyRegistrationResult!
@@ -89,6 +115,10 @@ type PasskeyRegistrationResult {
 }
 
 type Query {
+  """
+  List persisted contact-form inquiries, newest first (platform_admin only).
+  """
+  contactMessages(limit: Int = 100): [ContactMessage!]!
   myPasskeys: [PasskeyInfo!]!
   user(where: WhereUserInput!): User!
   users(where: WhereUserInput): [User!]!

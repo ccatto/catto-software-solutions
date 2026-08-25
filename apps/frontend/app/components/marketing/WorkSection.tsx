@@ -39,6 +39,15 @@ const PROJECTS: Project[] = [
     url: 'https://neuroartai.com/',
     image: '/work/neuroartai.png',
   },
+  {
+    name: 'Pickle Paddle Reviews',
+    pitch:
+      'A pickleball paddle review platform — specs, ratings, and lab-tested comparisons to help players find the right paddle. Web and mobile, in 8 languages.',
+    tech: ['Next.js', 'NestJS', 'Prisma', 'Capacitor'],
+    // TODO: swap to https://picklepaddlereviews.com once Cloudflare DNS is wired to Fly (PPR launch doc, Task 5).
+    url: 'https://pickle-paddle-reviews.fly.dev',
+    // TODO: add screenshot at public/work/picklepaddlereviews.png, then set image below.
+  },
 ];
 
 // Work / Portfolio — proof of capability, not products for sale.

@@ -79,6 +79,24 @@
     "description": "This is a protected page that requires authentication.",
     "loading": "Loading…"
   },
+  "admin": {
+    "title": "Admin",
+    "welcome": "Business dashboard",
+    "loading": "Loading…",
+    "denied": "You don't have access to this page.",
+    "contactTitle": "Contact submissions",
+    "contactBody": "Inquiries from the site contact form will appear here once they're saved to the database.",
+    "contactBadge": "Needs persistence",
+    "contactLoading": "Loading submissions…",
+    "contactError": "Couldn't load submissions. Make sure you're signed in as an admin (platform_admin).",
+    "contactEmpty": "No contact submissions yet.",
+    "contactCount": "{count} submission(s)",
+    "analyticsTitle": "Analytics",
+    "analyticsBody": "Traffic and visitor stats. Connect Google Analytics to see live numbers.",
+    "analyticsBadge": "Setup pending",
+    "linksTitle": "Quick links",
+    "linksBody": "Shortcuts to the tools you use to run the business."
+  },
   "about": {
     "title": "About",
     "description": "This app was built using the Catto App Template."

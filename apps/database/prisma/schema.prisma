@@ -122,7 +122,26 @@ model DevicePushToken {
 }
 
 // ============================================================================
-// TODO: Add your domain models below
+// Domain models
+// ============================================================================
+
+// Contact-form inquiries from the marketing site. Persisted so the team keeps a
+// permanent record (the SMS notification is fire-and-forget). Surfaced in the
+// admin dashboard. No auth relation — submitters are anonymous public visitors.
+model ContactMessage {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  projectType String
+  message     String
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("contact_message")
+}
+
+// ============================================================================
+// TODO: Add more domain models below
 // ============================================================================
 // Example:
 // model Post {
