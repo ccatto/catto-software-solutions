@@ -41,7 +41,10 @@
       "Bash(awk '{print $1,$2,$9}')",
       "Bash(lsof -nP -iTCP:4222 -sTCP:LISTEN)",
       "Bash(curl -s -o /dev/null -w \"register 3222 -> HTTP %{http_code}\\\\n\" http://localhost:3222/en/signin/register)",
-      "Bash(curl -s -o /dev/null -w \"graphql  4222 -> HTTP %{http_code}\\\\n\" \"http://localhost:4222/graphql\")"
+      "Bash(curl -s -o /dev/null -w \"graphql  4222 -> HTTP %{http_code}\\\\n\" \"http://localhost:4222/graphql\")",
+      "Bash(git push *)",
+      "Read(//Users/chriscatto/Documents/GitK8/Docs/**)",
+      "Read(//Users/chriscatto/Documents/GitK8/Docs/CSS/**)"
     ]
   }
 }
