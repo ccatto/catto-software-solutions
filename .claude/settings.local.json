@@ -44,7 +44,8 @@
       "Bash(curl -s -o /dev/null -w \"graphql  4222 -> HTTP %{http_code}\\\\n\" \"http://localhost:4222/graphql\")",
       "Bash(git push *)",
       "Read(//Users/chriscatto/Documents/GitK8/Docs/**)",
-      "Read(//Users/chriscatto/Documents/GitK8/Docs/CSS/**)"
+      "Read(//Users/chriscatto/Documents/GitK8/Docs/CSS/**)",
+      "Read(//Users/chriscatto/Documents/GitK8/**)"
     ]
   }
 }
